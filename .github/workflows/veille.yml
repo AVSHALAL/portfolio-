@@ -1,0 +1,56 @@
+name: Portfolio et veille quotidienne
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tester la collecte
+        run: python -m unittest discover -s tests -v
+      - name: Préparer les fichiers publics
+        run: |
+          mkdir public-site
+          if [ -f dist/index.html ]; then
+            cp -R dist/. public-site/
+          else
+            cp index.html veille.html public-site/
+            cp -R assets public-site/
+            if [ -d data ]; then cp -R data public-site/; fi
+          fi
+      - name: Actualiser les publications CERT-FR
+        run: python scripts/update_watch.py --root public-site --github-run --previous-url https://avshalal.github.io/portfolio-/data/veille.json
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier le portfolio
+        id: deployment
+        uses: actions/deploy-pages@v4
