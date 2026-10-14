@@ -5,7 +5,7 @@ const projects = [
     "n": "01",
     "category": "stage",
     "label": "Stage · Déploiement",
-    "title": "Un serveur Nginx dans Docker",
+    "title": "Comprendre Docker et tester Nginx",
     "summary": "Installer un serveur web dans un espace de test séparé, ouvrir le port 8080 et vérifier la page.",
     "tools": [
       "Docker",
@@ -15,14 +15,15 @@ const projects = [
     ],
     "context": "Chez Hilt Technology, je devais tester l’installation d’un service sans toucher aux outils utilisés par l’entreprise.",
     "steps": [
-      "Préparer les fichiers qui décrivent les réglages du service.",
+      "Analyser le fichier docker-compose.yml d’une infrastructure Docker / Traefik, comme indiqué dans mon tableau de stage. Traefik dirige les requêtes vers le bon service.",
+      "Préparer les fichiers qui décrivent les réglages du service de test Nginx.",
       "Lancer Nginx avec Docker et relier le port 8080 de la machine au port du serveur web.",
       "Vérifier que le conteneur fonctionne et que la page d’accueil s’affiche.",
       "Échanger avec le tuteur sur Slack en cas de difficulté."
     ],
     "result": "La page d’accueil Nginx a pu être affichée en utilisant le port 8080 dans l’environnement de test.",
     "learned": "Une image Docker est un modèle d’application ; un conteneur est l’application lancée à partir de ce modèle. Docker sépare les applications, mais leur sécurité dépend aussi des droits, des mises à jour et des accès ouverts.",
-    "skills": "Installer un service · tester son fonctionnement · expliquer les étapes.",
+    "skills": "Gérer le patrimoine informatique (C1) · travailler en mode projet (C4). Mise en pratique : lire les réglages, organiser les essais et vérifier un service.",
     "limit": "Les essais ont été faits sur une plateforme de test, pas sur les services utilisés par l’entreprise."
   },
   {
@@ -343,3 +344,14 @@ if('IntersectionObserver' in window && !reducedMotion?.matches){
     if(event.matches){reveals.disconnect();document.querySelectorAll('.reveal-pending').forEach(el=>el.classList.remove('reveal-pending'));}
   });
 }
+// Signaler une collecte ancienne sans modifier la date réelle de vérification.
+document.addEventListener('DOMContentLoaded',()=>{
+  const stamp=document.querySelector('[data-watch-checked]');
+  if(!stamp)return;
+  const checked=Date.parse(stamp.dataset.watchChecked);
+  if(Number.isFinite(checked)&&Date.now()-checked>72*60*60*1000){
+    const warning=document.createElement('p');warning.className='feed-stale';
+    warning.textContent='La dernière collecte date de plus de 3 jours. Consultez directement le CERT-FR pour les informations récentes.';
+    stamp.after(warning);
+  }
+});

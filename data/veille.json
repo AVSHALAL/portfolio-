@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-14T11:52:42.171131+00:00",
+  "github_run": false,
+  "sources": [
+    "https://cert.ssi.gouv.fr/avis/feed/",
+    "https://cert.ssi.gouv.fr/alerte/feed/"
+  ],
+  "items": [
+    {
+      "title": "Vulnérabilité dans Fortinet FortiMail (02 octobre 2026)",
+      "url": "https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-1257/",
+      "published": "2026-10-02T00:00:00+00:00"
+    },
+    {
+      "title": "Vulnérabilité dans les produits Fortinet (13 mai 2025)",
+      "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-006/",
+      "published": "2025-05-13T00:00:00+00:00"
+    },
+    {
+      "title": "Activités de post-exploitation dans Fortinet FortiGate (11 avril 2025)",
+      "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-004/",
+      "published": "2025-04-11T00:00:00+00:00"
+    },
+    {
+      "title": "[MàJ] Vulnérabilité dans les produits Fortinet (14 janvier 2025)",
+      "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-002/",
+      "published": "2025-01-14T00:00:00+00:00"
+    },
+    {
+      "title": "[MàJ] Multiples vulnérabilités dans Fortinet FortiManager (23 octobre 2024)",
+      "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2024-ALE-014/",
+      "published": "2024-10-23T00:00:00+00:00"
+    },
+    {
+      "title": "[MàJ] Vulnérabilité dans Fortinet FortiOS (09 février 2024)",
+      "url": "https://www.cert.ssi.gouv.fr/alerte/CERTFR-2024-ALE-004/",
+      "published": "2024-02-09T00:00:00+00:00"
+    }
+  ]
+}
